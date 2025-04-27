@@ -20,19 +20,17 @@ CryptoJS (for encryption)
 
 2. Live Code Link:
    
-GitHub: https://github.com/chillcoder4
+GitHub: https://github.com/chillcoder4/Happy-birthday.-thechilcoder8
 
 Netlify: https://thechilcoder8.netlify.app
 
 3. Social Media Links:
 
-Instagram: @the.chillcoder
+Instagram: [@the.chilcoder] https://www.instagram.com/the.chillcoder
 
-Telegram: https://t.me/techcine
+Telegram: [CodeFlix Vault] https://t.me/techcine
 
-Youtube: www.youtube.com/@fullfunstation
-
-Email: jaswanty132@gmail.com 
+Youtube: [@fullfunstation] www.youtube.com/@fullfunstation
 
 4. Description:
 
@@ -42,5 +40,4 @@ Include any key achievements or unique aspects of your work.
 
 5. Contact Information:
 
-For any queries or collaborations, you can reach me at jaswanty132@gmail.com 
-
+For any queries or collaborations, you can reach me on Instagram [@the.chillcoder]
