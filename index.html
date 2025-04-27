@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+<meta charset='UTF-8' />
+<meta content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5'
+  name='viewport' />
+<meta content='IE=edge' http-equiv='X-UA-Compatible' />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+<script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+
+  <title>Happy Birthday </title>
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Itim&display=swap');
+
+:root {
+--warna-bg: rgba(0, 0, 0, .3); 
+--tombol-teks: #fff;
+--tombol-bingkai: #fff;
+--bingkai: 18px;
+--bingkai-kiri: 1.3px solid var(--tombol-bingkai);
+--bingkai-kanan: 1.3px solid var(--tombol-bingkai);
+--gaya-font: 'Itim', cursive;
+--gaya-font2: 'Caveat', cursive;
+}
+@keyframes fanim {0% {background-position: 0% 0%;}25% {background-position: 100% 100%;} 50% {background-position: 0% 100%;} 75% {background-position: 50% 50%;} 100% {background-position: 0% 0%;}}
+body{background-color:#000;font-family:var(--gaya-font);padding: 20px 25px;-webkit-user-select: none; -ms-user-select: none; user-select: none;} a{text-decoration:none;}
+
+#bodyblur{animation: jj 7s infinite;opacity:0.4;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.3);transition:all 1s ease;} 
+#wallpaper{width:100%;height:100%;transform: scale(1);transition:all 1.7s ease;}
+#beneranblur{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.3);transition:all 3s ease;}
+
+@keyframes jj{0%  {transform: scale(1);} 50% {transform: scale(1.3);} 100% {transform: scale(1);}}
+@keyframes rts{from {transform:scale(.1);} to {transform:scale(1);}}
+@keyframes rto{from {transform:scale(1);} to {transform:scale(1.1);}}
+@keyframes aniopa{0% {transform: scale(1);} 50% {transform: scale(.75);} 100% {transform: scale(1);}}
+@keyframes rtf{from {transform: rotate(0deg);} to {transform: rotate(360deg);}} @keyframes rt{from {transform: scale(.9);/* transform: rotate(-5deg); */} to {transform: scale(1);/* transform: rotate(5deg); */}}
+@keyframes kont{0%  {left:-1px; top:-3px;} 50% {left:1px; top:3px;} 100% {left:-1px; top:-3px;}}
+
+blockquote{position:absolute;opacity:0;visibility:hidden;/*background:var(--warna-bg);border: 1px solid rgba(255, 255, 255, 0.5);border-radius:var(--bingkai);box-shadow: rgba(255,255,255, 0.3) 0px 7px 29px 0px;*/transform: scale(.1);transition:all .7s ease;margin-left:0;margin-right:0;color:var(--tombol-teks);text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);/*backdrop-filter:blur(2px);*/}
+blockquote{width:400px;text-align:center;line-height:1.3em;padding:0}
+blockquote p{font-size:16px;font-weight:400;line-height:1.5em;transition:all .5s ease;margin-left:0;margin-right:0}
+blockquote p:not(#kalimat, #teksnim){display:none;}
+#teksnim, blockquote p span.ft{font-family:var(--gaya-font2);font-size:20px;font-weight:700}
+#teksnim{font-size:22px;position:absolute;opacity:0;transform:scale(0);transition:all .8s ease}
+
+#pergeseran{margin-top:40px;position:absolute;opacity:0;transform:scale(0);transition:all 1s ease;display:flex;flex-wrap:nowrap;align-items:flex-start;justify-content:flex-start;max-width:500px;padding:0 30px; overflow-y:hidden;overflow-x:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory; -ms-overflow-style:none;-webkit-overflow-scrolling:touch}
+#pergeseran p{background:rgba(0, 0, 0, .5);border:1px dashed #fff;border-radius:14px;padding:15px;display:flex;flex-wrap:nowrap;text-align:center;line-height:1.4em;align-items:center;justify-content:center;flex-shrink:0; width:90%;height:150px;margin:0 15px 0 0; scroll-snap-align:center}
+#pergeseran p, #psn{color:white;text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);min-height:150px;}
+#pergeseran > *:last-child{margin-right:0} #pergeseran:after{content:'';display:block;flex-shrink:0; align-self:stretch;padding-left:20px}
+#pergeseran p b{display:block;}
+#pergeseran p b span{font-size:16px;font-weight:700;}
+#pergeseran p b span.ft{font-family:var(--gaya-font2);font-size:20px}
+#pergeseran p b img{background:rgba(255,255,255, .5);box-shadow: 0 4px 30px rgba(255,255,255, 0.2);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255, 255, 255, 1);border-radius: 50%;padding:10px;width:70px;height:70px;margin-bottom:20px;}
+#fotolove{border-radius:50%;transition:all .3s ease;} #fotolove:hover{transform: scale(.8);}
+#pesanAkhir{margin-top:30px;font-family:var(--gaya-font3);font-size:22px !important;font-weight:400;text-align:center;position: absolute;opacity:0;}
+
+#Tombol{position:relative;opacity:0;margin-top:20px !important;display:flex;align-items:left;list-style:none;transform: scale(.1);transition:all .7s ease;}
+#Tombol a{display:inline-flex;align-items:center; margin:0;margin:12px 0 12px 0;transition:all .2s ease;padding:10px;outline:0;border:1px dashed #fff;border-radius:14px;line-height:15px;background:rgba(0,0,0,.5);color:white;font-size:12px;font-weight:400;white-space:nowrap;overflow:hidden;z-index:1} 
+
+#Content{animation-name:none;animation-duration: 3s;animation-iteration-count: infinite;position:relative;opacity:0;margin-top:50px;width:100%;height:180px;transition:all .7s ease;}
+#Content > *{display:flex;align-items:center;text-align:center;justify-content:center;margin-top:1px;}
+.kumpulanstiker > img{display:none;background:rgba(255,255,255, .5);box-shadow: 0 4px 30px rgba(255,255,255, 0.2);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255, 255, 255, 1);border-radius: 50%;padding:10px;width:85px;height:85px;}
+#ftAwal > img{width:130px;height:130px;margin-bottom:30px;}
+#fotostiker{opacity:.1;transition:all .7s ease;transform: scale(.1);}
+#imglewat{margin:30px 0;opacity:0;max-width:520px;height:100px;position:absolute;transition:all 1s ease;}
+
+.halo{text-align:center;font-size:17px !important;position:relative;margin-bottom:20px} 
+.halo.gaya2{font-family:var(--gaya-font2);font-size:24px !important;margin-top:20px !important;}
+.halo.sty3{position:absolute !important;font-size:14px !important;font-weight:400 !important;margin:30px 20px !important;}
+
+#fotolove img{transition:all .5s ease;width:75px;height:75px;padding:0;background:none}
+#loveIn img{display:inline-flex;background:none;width:130px;height:130px;transition:all .3s ease;} 
+#ket, #ketgeser, .halo{text-shadow: 0px 2px 2px rgba(0, 0, 0, .8);font-size:17px;font-weight:700;color:white}
+#ket{margin-top:20px !important;font-size:12px;font-weight:400;opacity:.8}
+#ketgeser{position:absolute;margin-top:30px;font-size:10px;font-weight:400;transform:scale(0);opacity:0;transition:all .7s ease;}
+
+@keyframes leaves {0% {transform: scale(1.0);} 100% {transform: scale(.85);}}
+#loveIn{animation: leaves .7s ease-in-out infinite alternate;-webkit-animation: leaves 1s ease-in-out infinite alternate;} 
+.lovein{background:#fff;border-radius:50%;width:40px;height:40px;padding:10px;font-size:30px;display:flex;align-items:center;text-align:center;justify-content:center;transition:all .3s ease;}
+.lovein:hover{cursor:pointer}
+.lovein svg{stroke:#ff0000;stroke-width:1.3;fill:none;width:35px;height:35px}
+
+.swal2-modal > *{font-family:var(--gaya-font);font-size:16px;color:white}
+.swal2-title{line-height:1.3em;font-size:17px;text-align:center;padding:15px 30px 0 30px;}
+.swal2-timer-progress-bar-container > *{opacity:.7;background:#00B6FF;margin:0 2px}
+.swal2-modal{background: rgba(0,0,0, .6);backdrop-filter: blur(3px);-webkit-backdrop-filter: blur(3px);box-shadow: 0 4px 30px rgba(255,255,255, 0.3);border: 1px solid rgba(255, 255, 255, 0.3);border-radius: 14px;max-width:280px;top:-60px;}
+.swal2-image{background: rgba(255, 255, 255, 0.5);box-shadow: 0 4px 30px rgba(255,255,255, 0.3);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255, 255, 255, 0.3);border-radius: 50%;padding:10px;}
+.swal2-styled.swal2-confirm, .swal2-styled.swal2-cancel{position: relative;background-color: #4839eb;color: #fff;font-size:14px;border:1px solid #ffffff59;border-radius:14px;z-index: 1;transition: all 0.2s;}
+.swal2-timer-progress-bar-container{margin-left: 8px; margin-right: 8px;}
+.fa-heart {opacity:.3;color:white;font-size: 20px;position: absolute;animation:  heartMove linear 1;top: -10vh;z-index: 0;}
+@keyframes heartMove {0%{transform: translateY(-10vh) ;} 100%{transform: translateY(100vh) ;}}
+.sembunyi, #pesanditolak > *, #kado2, #kado3, .kumpulanwp > *{display:none !important}
+
+svg{vertical-align: middle;width: 22px;height: 22px;fill: #fff}
+svg.line{fill: none;stroke-width: 2;animation: moving .7s linear infinite alternate;}
+.blocklove{display: none;flex-direction: column;justify-content: center;align-items: center;}
+.lovein{background:#fff;color:#FF0900;border-radius:50%;width:40px;height:40px;padding:10px;font-size:30px;display:flex;align-items:center;text-align:center;justify-content:center;transition:all .3s ease;}
+.lovein:hover{transform: scale(.9);color:#FF0900;}
+.heart-icon {stroke: #fff;width: 30px;height: 30px;position: fixed;animation:  heartMove linear 1;top: -10vh;z-index: 999;}
+
+@keyframes heartMove {
+  0% {transform: translateY(-10vh);}
+  100% {transform: translateY(100vh);}
+}
+
+.spin{animation: spin 4s linear infinite alternate;}
+@keyframes spin {
+  from {
+    transform: rotate(20deg);
+  }
+  to {
+    transform: rotate(-20deg);
+  }
+}
+@keyframes spin2 {
+  from {
+    transform: rotate(5deg);
+  }
+  to {
+    transform: rotate(-5deg);
+  }
+}
+@keyframes moving {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(3px);
+  }
+}
+.coffee-btn {
+  position: fixed;
+  bottom: -60px;
+  right: 20px;
+  background: #000;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 0.5%;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0px 0px 17px 7px #bd5fff99;
+  z-index: 999;
+  opacity: 0;
+  animation: fall-in-out 6s ease-in-out infinite;
+  transform: rotate(-30deg);
+}
+
+/* Animation */
+@keyframes fall-in-out {
+  0% {
+    bottom: -60px;
+    transform: rotate(-30deg) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    bottom: 40px;
+    transform: rotate(15deg) scale(1.1);
+    opacity: 1;
+  }
+  30% {
+    transform: rotate(-10deg);
+  }
+  40% {
+    transform: rotate(5deg);
+  }
+  50% {
+    bottom: 20px;
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  80% {
+    bottom: 20px;
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  100% {
+    bottom: -60px;
+    opacity: 0;
+    transform: rotate(-30deg) scale(0.5);
+  }
+}
+
+
+ .chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background-image: url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXc0NDMyZmhuNnl0Yjg2a2ltdjBtaTcxaHE4MXJzOTc1MndsdTBrZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/U3qYN8S0j3bpK/giphy.webp);
+  border: 2px solid #ff0000;
+  border-radius: 14px;
+  padding: 16px;
+  width: 340px;
+  max-width: 95%;
+  max-height: 80vh; /* ✅ Max height on screen */
+  overflow-y: auto;  /* ✅ Scroll if content overflows */
+  z-index: 9999;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+}
+
+    @media (max-width: 380px) {
+      .chat-popup {
+        left: 10px;
+        right: 10px;
+        width: auto;
+      }
+    }
+
+    .chat-popup .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-size: 18px;
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    .chat-popup h2 {
+      text-align: center;
+      color: #001dff;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+  .chat-popup input[type="text"],
+.chat-popup textarea {
+  width: 95%;
+  padding: 12px 5px;
+  margin: 6px 0;
+  border: 1px solid #001dff;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 18px;
+  resize: none;
+  font-family: inherit;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Input field pe focus hone par usi field ka effect */
+.chat-popup input[type="text"]:focus,
+.chat-popup textarea:focus {
+  transform: translateY(-5px);
+  color: #00ffff;
+  border-color: #00ffff;
+}
+    .chat-popup textarea {
+      height: 90px;
+      transition: height 0.3s ease;
+    }
+
+    .chat-popup button {
+      background: #6bfff369;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .chat-popup .status {
+      text-align: center;
+      color: rgb(255 255 255);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .chat-log {
+      margin-top: 16px;
+      max-height: 180px;
+      overflow-y: auto;
+      border-top: 1px solid #444;
+      padding-top: 10px;
+    }
+
+    .chat-msg {
+      background-color: #2e2e2e;
+      border-radius: 6px;
+      padding: 6px 10px;
+      margin-bottom: 6px;
+      font-size: 13px;
+      color: #eee;
+    }
+  
+
+.rating-box {
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+    padding: 10px;
+	border-color: white;
+    border: 2px solid;
+    border-radius: 8px;
+    flex-direction: row-reverse;
+
+    /* ✅ Responsive sizing */
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 420px;  /* Adjust according to your layout */
+    margin: 0 auto;     /* Center horizontally */
+    box-sizing: border-box;
+}
+
+.rating-box label {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+input:not(:checked)~label {
+    color: #eeeeee3a;
+    transition: .3s;
+}
+
+input:checked~label {
+    color: #ffa534;
+    animation: filling-animation .7s forwards;
+    filter: drop-shadow(0px 0px 10px #ffffff3f);
+}
+
+
+@keyframes filling-animation {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(0);
+    }
+
+    60% {
+        transform: scale(1.2);
+    }
+
+}
+
+</style>
+
+
+<body>
+
+  <!-- Ganti Audio di sini -->
+  <audio src="./1.mp3" id="linkmp3" class="sembunyi"></audio>
+
+  <div id="bodyblur">
+    <!-- Wallpaper / Background --><img src="./wp2.jpeg" id="wallpaper" />
+  </div>
+
+  <div id='Content'>
+
+    <div id="ftAwal">
+      <!-- Stiker Pembuka -->
+      <img src="./pandaputih.gif" id="ftoAwal" />
+    </div>
+
+    <div id="loveIn">
+      <!-- Tombol LOVE -->
+   
+          class='line' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+          <g transform='translate(2.550170, 3.550158)'>
+            <path
+              d='M0.371729633,8.89614246 C-0.701270367,5.54614246 0.553729633,1.38114246 4.07072963,0.249142462 C5.92072963,-0.347857538 8.20372963,0.150142462 9.50072963,1.93914246 C10.7237296,0.0841424625 13.0727296,-0.343857538 14.9207296,0.249142462 C18.4367296,1.38114246 19.6987296,5.54614246 18.6267296,8.89614246 C16.9567296,14.2061425 11.1297296,16.9721425 9.50072963,16.9721425 C7.87272963,16.9721425 2.09772963,14.2681425 0.371729633,8.89614246 Z'>
+            </path>
+            <path d='M13.23843,4.013842 C14.44543,4.137842 15.20043,5.094842 15.15543,6.435842'></path>
+          </g>
+        </svg>
+    </div>
+    <p id="ket">Touch the Love!</p>
+
+    <div class="kumpulanstiker">
+      <!-- Stiker untuk Konten -->
+      <img src="./cilukba.gif" id="fotostiker" />
+      <img src="./pandapanah.gif" id="fotostiker1" />
+      <img src="./pandaputih.gif" id="fotostikerPopup" />
+      <img src="./weee.gif" id="fotostikerPopupCon" />
+      <img src="./ngumpet.gif" id="fotostikerPopupCan" />
+    </div>
+
+    <div>
+      <div id='pergeseran'>
+
+        <!-- Pesan -->
+        <p><b><img src="./pusn.gif" /><br>
+            <span>Hey You 🤭❤️</span>
+          </b></p>
+
+        <p><b><img src="./mikir.gif" /><br>
+            <span>I Just Want To <br>Say You 😆</span>
+          </b></p>
+
+        <p><b><img src="./cilukba.gif" /><br>
+            <span>Hey it's your birthday today 😜</span>
+          </b></p>
+
+        <p><b><img src="./g5.gif" /><br>
+            <span class="ft">Happy Birthday! 🥳</span>
+          </b></p>
+
+        <p><b><img src="./mndkat.gif" /><br>
+          <span>Wishing you a long life<br />and good health always 🥰</span>
+          </b></p>
+
+      </div>
+    </div>
+
+    <!-- Edit Pesan Akhir di Sini -->
+    <div>
+      <blockquote id='bq'>
+        <p id="teksnim">Happy Level Up Day! 🥳</p>
+        <p id="kalimat">
+          <span id="klganti"><b>Just kidding haha 🤣</b><br /><br /></span>
+          The main thing is that on your birthday, I hope you become<br />
+          a better person and don't forget to keep up the spirit to pursue all<br />
+          your wishes.. 🥳<br /><br />
+          <span class="ft">Wish You All The Best ✨</span>
+        </p>
+      </blockquote>
+    </div>
+
+    <!--<p id="ketgeser">Klik untuk Geser!</p>-->
+    <div id="Tombol">
+      <a onClick="multifungsi()">
+        <b id="tmbl">Swipe &#128073;</b>
+      </a>
+    </div>
+	 </div>
+<button class="coffee-btn" onclick="openPopup()"><img src="./feedback.png"  alt="click" style="width: 45px; height: 45px;"></button>
+
+  <div class="chat-popup" id="chatPopup">
+    <span class="close-btn" onclick="closePopup()">❌</span>
+   <h2>This message will be delivered to the developer and owner of the website</h2>
+<p style="font-size: 13px; color: rgb(255 255 255); text-align: center; margin-top: -8px;">
+  Got a doubt, need help with coding, or want a special project made for someone? Just drop your message here!<br>
+  If you have any suggestions, feedback, or cool ideas to improve the site – feel free to share them too!<br>
+  Insta 👉🏻 
+  <a href="https://instagram.com/the.chillcoder" target="_blank" style="color: #98ff2d; text-decoration: none;">
+    @the.chillcoder
+  </a>
+</p>
+
+ 
+        <div class="rating-box">
+            <input type="radio" id="rating-5" name="rating" hidden>
+            <label for="rating-5" class="fas fa-star"></label>
+            <input type="radio" id="rating-4" name="rating" hidden>
+            <label for="rating-4" class="fas fa-star"></label>
+            <input type="radio" id="rating-3" name="rating" hidden>
+            <label for="rating-3" class="fas fa-star"></label>
+            <input type="radio" id="rating-2" name="rating" hidden>
+            <label for="rating-2" class="fas fa-star"></label>
+            <input type="radio" id="rating-1" name="rating" hidden>
+            <label for="rating-1" class="fas fa-star"></label>
+          
+        </div>
+  
+
+    <form id="chatForm">
+      <input type="text" name="subject" id="nameField" placeholder="Your Name" required onclick="showSuggestions()"/>
+      <input type="text" name="contactEmail" id="contactEmailField" placeholder="Your Email or Contact Number" required onclick="showSuggestions()" />
+      <textarea name="message" id="msgField" placeholder="Write your message..." required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div class="status" id="statusMsg"></div>
+    <div class="chat-log" id="chatLog"></div>
+  </div>
+  <script>
+    function bqmuncul() {
+      if (poinjwb == 1) {
+        katakata = kalimat.innerHTML; kalimat.innerHTML = "";
+      } else {
+        klganti.innerHTML = "Just Kidding 🤣<br><br>"; katakata = kalimat.innerHTML; kalimat.innerHTML = "";
+      }
+      Content.style = "opacity:1;margin-top:7vh"; fotostiker.style = "display:none"; pergeseran.style = "display:none"; Tombol.style = ""; bq.style = "position:relative;opacity:1;visibility:visible;margin-top:20px;transform: scale(1);";
+      setTimeout(kalimatakhir, 200); ftganti = 0; fthilang();
+    }
+
+    tompositif = "Yes";
+    tomnegatif = "No";
+    async function aksibalas() {
+      var { isConfirmed: prtanya } = await swals.fire({
+        title: 'Do you want a gift? 🤭❤️',
+        imageUrl: '' + fotostikerPopup.src, showCancelButton: true, confirmButtonText: '' + tompositif, cancelButtonText: '' + tomnegatif, cancelButtonColor: '#FF0000',
+      });
+      if (prtanya) {
+        await swalst.fire({
+          title: 'Just kidding! 🤣',
+          html: 'I am the gift meant for you 😜❤️',
+          imageUrl: '' + fotostikerPopupCon.src,
+        });
+        poinjwb = 1;
+      } else {
+        await swals.fire({
+          title: 'Oh no!',
+          html: 'Alright, if you don’t want it 😜❤️',
+          imageUrl: '' + fotostikerPopupCan.src,
+        });
+        poinjwb = 2;
+      }
+      bqmuncul();
+    }
+
+    const body = document.querySelector("body"); const iniwp = [];iden = 1; const swals = Swal.mixin({timer: 99999, allowOutsideClick: false, showConfirmButton: true, timerProgressBar: false, imageHeight: 90,}); const swalst = Swal.mixin({timer: 2600, allowOutsideClick: false, showConfirmButton: false, timerProgressBar: true, imageHeight: 90,}); audio = new Audio('' + linkmp3.src); ftganti=0;fungsi=0;fungsiAwal=0;deffotostiker=fotostiker.src;
+/* Hati Berjatuhan */
+function berjatuhan() {
+  const heart = document.createElement("div");
+  heart.innerHTML = "<svg class='line spin' style='opacity:.4;' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><g transform='translate(2.550170, 3.550158)'><path d='M0.371729633,8.89614246 C-0.701270367,5.54614246 0.553729633,1.38114246 4.07072963,0.249142462 C5.92072963,-0.347857538 8.20372963,0.150142462 9.50072963,1.93914246 C10.7237296,0.0841424625 13.0727296,-0.343857538 14.9207296,0.249142462 C18.4367296,1.38114246 19.6987296,5.54614246 18.6267296,8.89614246 C16.9567296,14.2061425 11.1297296,16.9721425 9.50072963,16.9721425 C7.87272963,16.9721425 2.09772963,14.2681425 0.371729633,8.89614246 Z'></path><path d='M13.23843,4.013842 C14.44543,4.137842 15.20043,5.094842 15.15543,6.435842'></path></g></svg>";
+  heart.className = "heart-icon";
+  heart.style.left = (Math.random() * 95) + "vw";
+  heart.style.animationDuration = (Math.random() * 3) + 2 + "s";
+  document.body.appendChild(heart);
+}
+
+setInterval(function() {
+  var heartArr = document.querySelectorAll(".heart-icon");
+  if (heartArr.length > 100) {
+    heartArr[0].remove();
+  }
+}, 100);
+Content.style = "opacity:1;margin-top:14vh"; 
+
+const box = document.getElementById('pergeseran');
+const totalSlide = box.children.length;
+console.log('Total Slide: ', totalSlide);
+totalPesan = totalSlide;
+
+var date = new Date();
+var days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+var months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+var hours = date.getHours();
+var minutes = date.getMinutes();
+
+// Tambahkan awalan nol jika jam atau menit kurang dari 10
+if (hours < 10) {hours = "0" + hours;}
+if (minutes < 10) {minutes = "0" + minutes;}
+
+var day = days[date.getDay()];
+var dateNum = date.getDate();
+var month = months[date.getMonth()];
+var year = date.getFullYear();
+
+console.log(hours + "." + minutes + " WIB - " + day + ", " + dateNum + " " + month + " " + year);
+// Dapatkan elemen yang ingin ditambahkan watermark
+var element = document.getElementById("Content");
+
+// Buat elemen baru untuk menampung watermark
+var watermark = document.createElement("div");
+
+// Setel teks watermark dan propertinya
+// watermark.textContent = day + ", " + dateNum + " " + month + " " + year;
+watermark.style = "color:white;opacity:.5;font-size:10px;position:fixed;bottom:25px;left:25px;z-index:2";
+
+// Tambahkan elemen watermark ke dalam elemen utama
+element.appendChild(watermark);
+
+//////////////////////////////////////////////////
+
+  var sudahklik = true;loveIn.innerHTML = "<label class='lovein'><svg class='line' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><g transform='translate(2.550170, 3.550158)'><path d='M0.371729633,8.89614246 C-0.701270367,5.54614246 0.553729633,1.38114246 4.07072963,0.249142462 C5.92072963,-0.347857538 8.20372963,0.150142462 9.50072963,1.93914246 C10.7237296,0.0841424625 13.0727296,-0.343857538 14.9207296,0.249142462 C18.4367296,1.38114246 19.6987296,5.54614246 18.6267296,8.89614246 C16.9567296,14.2061425 11.1297296,16.9721425 9.50072963,16.9721425 C7.87272963,16.9721425 2.09772963,14.2681425 0.371729633,8.89614246 Z'></path><path d='M13.23843,4.013842 C14.44543,4.137842 15.20043,5.094842 15.15543,6.435842'></path></g></svg></label>";
+  document.getElementById("loveIn").onclick = function() {
+      if(sudahklik == true && fungsiAwal==0){
+        loveIn.style="transition:all .5s ease;opacity:0";
+        ftAwal.style="transition:all .5s ease;opacity:0";
+        ket.style="transition:all .5s ease;opacity:0";
+        fungsiAwal=1;setTimeout(initengahan,300);
+      } else {
+      	sudahklik = true;
+      	loveIn.innerHTML = "<label class='lovein'><svg class='line' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><g transform='translate(2.550170, 3.550158)'><path d='M0.371729633,8.89614246 C-0.701270367,5.54614246 0.553729633,1.38114246 4.07072963,0.249142462 C5.92072963,-0.347857538 8.20372963,0.150142462 9.50072963,1.93914246 C10.7237296,0.0841424625 13.0727296,-0.343857538 14.9207296,0.249142462 C18.4367296,1.38114246 19.6987296,5.54614246 18.6267296,8.89614246 C16.9567296,14.2061425 11.1297296,16.9721425 9.50072963,16.9721425 C7.87272963,16.9721425 2.09772963,14.2681425 0.371729633,8.89614246 Z'></path><path d='M13.23843,4.013842 C14.44543,4.137842 15.20043,5.094842 15.15543,6.435842'></path></g></svg></label>";
+      }
+    }
+  
+  function initengahan(){
+    ftAwal.style="display:none";loveIn.style="display:none";ket.style="display:none";
+    Content.style = "opacity:1;margin-top:10vh";
+    setTimeout(inipesan,200);audio.play();
+  }
+  
+aktigeser=0;thisgeser=1;
+document.getElementById("bodyblur").onclick = function() {multifungsi()}
+
+function multifungsi(){
+  if(aktigeser==1){
+    if(thisgeser==totalPesan){aksiakhir()}
+    document.getElementById('pergeseran').scrollLeft += 300;
+    hsementara();
+    //ftganti++;
+    //fthilang();
+  }
+  if(thisgeser==100){Tombol.style="";setTimeout(aksibalas,150);}
+}
+
+  async function inipesan(){nama = "Kamu";window.nama = nama;mulainama();}  
+  
+  async function mulainama() {
+    setTimeout(pgmuncul,400);
+    //ftmuncul();
+  }
+
+  function hsementara(){
+    //ketgeser.style="position:relative;";
+    Tombol.style="";
+    thisgeser+=1;aktigeser=0;setTimeout(munculkembali,500)
+  }
+  function munculkembali(){
+    if(thisgeser<=totalPesan){
+      //ketgeser.style="position:relative;transform:scale(1);opacity:.7";
+      Tombol.style="opacity:1;transform: scale(1)";
+      aktigeser=1;
+    }
+    if(thisgeser==50){tmbl.innerHTML = "💌 Balas";Tombol.style="opacity:1;transform: scale(1)";thisgeser=100;}
+    //if(thisgeser==totalPesan){aksiakhir();thisgeser=50}
+  }
+  
+  function aksiakhir(){
+  	   pergeseran.style="position:relative;";
+         //ketgeser.style="position:relative";
+         Tombol.style="";
+         setTimeout(aksibalas,400);
+  }
+  
+  function kalimatakhir(){
+  	new TypeIt("#kalimat", {
+      strings: ["" + katakata], startDelay: 50, speed: 37, cursor: true,
+      afterComplete: function(){
+      	kalimat.innerHTML = katakata;
+          setTimeout(munculteksnim,300);
+          //tmbl.innerHTML = "💌 Balas";thisgeser=100;
+          //Tombol.style="opacity:1;transform: scale(1)";
+      },}).go();
+  }
+  function munculteksnim(){
+    klganti.style="display:none";
+    teksnim.style="position:relative;opacity:1;transform:scale(1);";
+    setTimeout(jjteksnim,550);
+    ftganti=1;fthilang();
+    setInterval(berjatuhan,250);
+  }
+
+  function jjteksnim(){teksnim.style.animation="rto .8s infinite alternate";}
+  
+  function ftmuncul(){
+    if(ftganti==0){fotostiker.src = deffotostiker;}
+    if(ftganti==1){fotostiker.src = fotostiker1.src;}
+    if(ftganti==2){fotostiker.src = fotostiker2.src;}
+    if(ftganti==3){fotostiker.src = fotostiker3.src;}
+    if(ftganti<=10){fotostiker.style="display:inline-flex;opacity:1;transform:scale(1)";}
+  }
+  function fthilang(){fotostiker.style="display:inline-flex;opacity:0;transform:scale(0)";if(ftganti<10){setTimeout(ftmuncul,250)}}
+  function jjfoto(){fotostiker.style.animation="rto .8s infinite alternate";}
+  
+  function pgmuncul(){pergeseran.style="position:relative;opacity:1;transform:scale(1);";setTimeout(munculkembali,500)}
+
+  function bqhilang() { wallpaper.style = "transform: scale(2);"; bodyblur.style = "opacity:.3"; bq.style = "position:relative;transition:all .7s ease;"; }
+
+  </script>
+   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("Q4ndbosDC3ONA7Gwt");
+
+  let nameLocked = false;
+  let senderName = "";
+  let chatVisible = false;
+  let lastContact = localStorage.getItem("lastContact") || "";
+  let lastEmail = localStorage.getItem("lastEmail") || "";
+
+  const msgField = document.getElementById("msgField");
+  msgField.addEventListener("input", function () {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + "px";
+  });
+
+  document.getElementById("chatForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const nameInput = document.getElementById("nameField");
+    const contactEmailInput = document.getElementById("contactEmailField");
+    const messageInput = document.getElementById("msgField");
+    const status = document.getElementById("statusMsg");
+    const chatLog = document.getElementById("chatLog");
+
+    if (!nameLocked) {
+      senderName = nameInput.value;
+      nameInput.disabled = true;
+      nameLocked = true;
+    }
+
+    const userMessage = messageInput.value.trim();
+    const userContactEmail = contactEmailInput.value.trim();
+
+    if (!userMessage) {
+      status.innerText = "Type something 😛";
+      return;
+    }
+
+    const info = "info: Happy Birthday ,thechillcoder8 | 💌The Chill Coder";
+    const msg = `msg: ${userMessage}`;
+    const userContact = `user contact: ${userContactEmail}`;
+    const fullMessage = `${info}\n${msg}\n${userContact}`;
+
+    const ratingValue = document.querySelector('input[name="rating"]:checked');
+const ratingText = ratingValue ? ` Rating: ${ratingValue.id.split('-')[1]}/5` : " Rating: Not given";
+
+const subjectText = `${senderName}\n${ratingText}`;
+
+const params = {
+  subject: subjectText,
+  message: fullMessage,
+  email: userContactEmail
+};
+    status.innerText = "Sending... 💫";
+
+    emailjs.send("service_wid1dln", "template_rsciumc", params)
+      .then(function () {
+        status.innerHTML = "Message sent successfully! ✅<br>Thank you For Your Feedback!";
+        const msgDiv = document.createElement("div");
+        msgDiv.classList.add("chat-msg");
+        msgDiv.textContent = `${senderName}: ${userMessage}`;
+        chatLog.appendChild(msgDiv);
+
+        messageInput.value = "";
+        messageInput.style.height = "90px";
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }, function (error) {
+        status.innerText = "Failed to send message! ❌";
+        console.error("EmailJS Error:", error);
+      });
+  });
+
+  function openPopup() {
+    const chatPopup = document.getElementById("chatPopup");
+    const coffeeBtn = document.querySelector(".coffee-btn");
+
+    chatVisible = !chatVisible;
+
+    if (chatVisible) {
+      chatPopup.style.display = "block";
+      coffeeBtn.style.display = "none";
+      document.getElementById("contactEmailField").value = lastContact || lastEmail;
+    } else {
+      chatPopup.style.display = "none";
+      coffeeBtn.style.display = "inline-block";
+    }
+  }
+
+  function closePopup() {
+    document.getElementById("chatPopup").style.display = "none";
+    document.querySelector(".coffee-btn").style.display = "inline-block";
+    chatVisible = false;
+
+    const contactEmailInput = document.getElementById("contactEmailField").value.trim();
+    if (contactEmailInput) {
+      if (isNaN(contactEmailInput)) {
+        localStorage.setItem("lastEmail", contactEmailInput);
+      } else {
+        localStorage.setItem("lastContact", contactEmailInput);
+      }
+    }
+  }
+
+  function showSuggestions() {
+    const suggestionsDiv = document.getElementById("suggestions");
+    suggestionsDiv.style.display = "block";
+    suggestionsDiv.innerHTML = "";
+    if (lastContact) {
+      suggestionsDiv.innerHTML += `<p onclick="fillInput('${lastContact}')">${lastContact}</p>`;
+    }
+    if (lastEmail) {
+      suggestionsDiv.innerHTML += `<p onclick="fillInput('${lastEmail}')">${lastEmail}</p>`;
+    }
+  }
+
+  function fillInput(value) {
+    document.getElementById("contactEmailField").value = value;
+    document.getElementById("suggestions").style.display = "none";
+  }
+</script>
+
+</body>
+
+</html>
