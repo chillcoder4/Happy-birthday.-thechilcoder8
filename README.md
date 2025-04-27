@@ -1,10 +1,10 @@
-# Happy-birthday.-thechilcoder8
+# Happy-birthday.-thechillcoder8
 
 1. Projects Overview:
 
-Project Name: Happy-birthday.-thechilcoder8
+Project Name: Happy-birthday.-thechillcoder8
 
-Live URL: https://thechilcoder8.netlify.app
+Live URL: https://thechillcoder8.netlify.app
 
 Technologies Used:
 
@@ -20,13 +20,13 @@ CryptoJS (for encryption)
 
 2. Live Code Link:
    
-GitHub: https://github.com/chillcoder4/Happy-birthday.-thechilcoder8
+GitHub: https://github.com/chillcoder4/Happy-birthday.-thechillcoder8
 
-Netlify: https://thechilcoder8.netlify.app
+Netlify: https://thechillcoder8.netlify.app
 
 3. Social Media Links:
 
-Instagram: [@the.chilcoder] https://www.instagram.com/the.chillcoder
+Instagram: [@the.chillcoder] https://www.instagram.com/the.chillcoder
 
 Telegram: [CodeFlix Vault] https://t.me/techcine
 
